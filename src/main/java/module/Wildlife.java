@@ -14,4 +14,17 @@ public class Wildlife {
     public String getName(){
         return name;
     }
+    public int getId(){
+        return id;
+    }
+    public String getHealth(){
+        return health;
+    }
+    public String getAge(){
+        return age;
+    }
+    public String getType(){
+        return type;
+    }
+
 }
