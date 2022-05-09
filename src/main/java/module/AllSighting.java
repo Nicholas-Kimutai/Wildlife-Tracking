@@ -23,4 +23,40 @@ public class AllSighting {
         this.lastSeen = lastSeen;
 
     }
+
+    //get methods
+    public int getAnimalId() {
+        return animalId;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getRangerName() {
+        return rangerName;
+    }
+
+    public Timestamp getLastSeen() {
+        return lastSeen;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public String getHealth() {
+        return health;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getType() {
+        return type;
+    }
 }
