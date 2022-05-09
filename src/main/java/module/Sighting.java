@@ -19,4 +19,26 @@ public class Sighting {
             throw new IllegalArgumentException("Please enter all input fields.");
         }
     }
+
+    // get methods
+    public int getAnimalId() {
+        return animalId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getRangerName() {
+        return rangerName;
+    }
+
+    public Timestamp getLastSeen() {
+        return lastSeen;
+    }
+
 }
