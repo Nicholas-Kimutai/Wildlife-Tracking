@@ -27,5 +27,18 @@ public class Wildlife {
         return type;
     }
 
+    public void save(){
+        try(Connection connect = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name, health, age, type) VALUES (:name, :health, :age, :type)";
+            this.id = (int) connect.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("health", this.health)
+                    .addParameter("age",this.age)
+                    .addParameter("type", this.type)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
 
 }
