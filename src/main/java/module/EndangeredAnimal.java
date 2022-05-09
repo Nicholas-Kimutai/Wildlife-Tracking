@@ -37,4 +37,14 @@ public class EndangeredAnimal extends Wildlife implements DatabaseManagement{
                     .executeAndFetch(EndangeredAnimal.class);
         }
     }
+    public static EndangeredAnimal find(int id) {
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM animals where id=:id";
+            EndangeredAnimal animal = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(EndangeredAnimal.class);
+            return animal;
+        }
+    }
 }
