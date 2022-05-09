@@ -10,12 +10,12 @@ public class AnimalsTest {
     @Rule
     public DatabaseRule databaseRule = new DatabaseRule();
 
-    public Animals setUpAnimal(){
-        return new Animals();
+    public Animal setUpAnimal(){
+        return new Animal();
     }
     @Test
     public void animal_instantiatesCorrectly_true(){
-        Animals animal = setUpAnimal();
-        assertEquals(true,animal instanceof Animals);
+        Animal animal = setUpAnimal();
+        assertEquals(true,animal instanceof Animal);
     }
 }
