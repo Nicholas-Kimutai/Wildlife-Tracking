@@ -1,6 +1,8 @@
 package module;
 import org.sql2o.Connection;
 
+import java.util.List;
+
 
 public class Animal extends Wildlife implements DatabaseManagement {
     public static final String ANIMAL_TYPE = "animal";
@@ -22,4 +24,13 @@ public class Animal extends Wildlife implements DatabaseManagement {
             return this.getName().equals(newAnimal.getName());
         }
     }
+    public static List<Animal> all() {
+        String sql = "SELECT * FROM animals WHERE type='animal';";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Animal.class);
+        }
+    }
+
 }
