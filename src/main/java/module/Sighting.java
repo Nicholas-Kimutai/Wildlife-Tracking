@@ -1,6 +1,8 @@
 package module;
 
 
+import org.sql2o.Connection;
+
 import java.sql.Timestamp;
 
 public class Sighting {
@@ -41,6 +43,8 @@ public class Sighting {
         return lastSeen;
     }
 
+
+// override equals
     @Override
     public boolean equals(Object otherSighting){
         if (!(otherSighting instanceof Sighting)) {
@@ -50,6 +54,21 @@ public class Sighting {
             return this.getLocation().equals(newSighting.getLocation()) &&
                     this.getRangerName().equals(newSighting.getRangerName()) &&
                     this.getAnimalId() == newSighting.getAnimalId();
+        }
+    }
+
+    //save to database method
+
+    public void save(){
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO sightings (animalId, location, rangerName, lastSeen) VALUES (:animalId, :location, :rangerName, now())";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("animalId", this.animalId)
+                    .addParameter("location", this.location)
+                    .addParameter("rangerName",this.rangerName)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate()
+                    .getKey();
         }
     }
 
