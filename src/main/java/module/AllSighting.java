@@ -1,6 +1,9 @@
 package module;
 
+import org.sql2o.Connection;
+
 import java.sql.Timestamp;
+import java.util.List;
 
 public class AllSighting {
     private int animalId;
@@ -58,5 +61,13 @@ public class AllSighting {
 
     public String getType() {
         return type;
+    }
+    //List all sightings method
+    public static List<AllSighting> getAll(){
+        String sql = "SELECT animals.id,name,health,age,location,rangerName,type,lastSeen FROM animals INNER JOIN sightings ON sightings.animalId = animals.id ORDER BY lastSeen";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql)
+                    .executeAndFetch(AllSighting.class);
+        }
     }
 }
