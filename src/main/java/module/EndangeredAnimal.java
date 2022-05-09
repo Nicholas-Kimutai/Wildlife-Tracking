@@ -9,7 +9,19 @@ public class EndangeredAnimal extends Wildlife implements DatabaseManagement{
         this.type = ANIMAL_TYPE;
 
         if (name.isEmpty() || health.isEmpty() || age.isEmpty()){
-            throw new IllegalArgumentException("Please enter all input fields.");
+            throw new IllegalArgumentException("Please input all fields.");
+        }
+    }
+
+    @Override
+    public boolean equals(Object otherAnimal){
+        if (!(otherAnimal instanceof EndangeredAnimal)) {
+            return false;
+        } else {
+            EndangeredAnimal newAnimal = (EndangeredAnimal) otherAnimal;
+            return this.getName().equals(newAnimal.getName()) &&
+                    this.getHealth().equals(newAnimal.getHealth()) &&
+                    this.getAge().equals(newAnimal.getAge());
         }
     }
 }
