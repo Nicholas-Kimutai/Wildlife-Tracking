@@ -1,4 +1,4 @@
-
+import module.*;
 import spark.ModelAndView;
 import spark.QueryParamsMap;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -43,7 +43,7 @@ public class App {
                 Sighting anotherSighting = new Sighting(endangeredAnimal.getId(), location, rangerName);
                 anotherSighting.save();
             }
-            List<AllSightings> allSightings = AllSightings.getAll();
+            List<AllSighting> allSightings = AllSighting.getAll();
             List<EndangeredAnimal> animals= EndangeredAnimal.all();
             model.put("sightings", allSightings);
             model.put("animals", animals);
@@ -53,7 +53,7 @@ public class App {
 
         get("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("sightings", AllSightings.getAll());
+            model.put("sightings", AllSighting.getAll());
             model.put("animal", EndangeredAnimal.all());
             return new ModelAndView(model, "sightings.hbs");
         }, new HandlebarsTemplateEngine());
