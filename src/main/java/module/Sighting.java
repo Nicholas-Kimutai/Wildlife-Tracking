@@ -13,7 +13,7 @@ public class Sighting {
     private String rangerName;
     private Timestamp lastSeen;
 
-    public Sightings (int animalId, String location, String rangerName){
+    public Sighting(int animalId, String location, String rangerName){
         this.animalId = animalId;
         this.location = location;
         this.rangerName = rangerName;
