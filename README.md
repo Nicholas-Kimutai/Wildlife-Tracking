@@ -27,6 +27,11 @@ When you run the commands successfully, you should have a local version of this 
 
 For psql
 
+* CREATE DATABASE wildlife_sighting;
+* CREATE TABLE sightings(id serial PRIMARY KEY, animalid int,location varchar,rangername varchar,lastseen timestamp);
+* CREATE TABLE animals(id serial PRIMARY KEY, name varchar, health varchar, age varchar, type varchar);
+* CREATE DATABASE wildlife_sighting_test WITH TEMPLATE wildlife_sighting;
+
 ### 2. Online Repository
 -   Make sure you have a stable internet for forking this repository.
 -   According to the license, you can fork this project. You need ibkt click on the forking icon and it will be added as one of your repositories
