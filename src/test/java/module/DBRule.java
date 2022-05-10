@@ -4,8 +4,7 @@ import org.junit.rules.ExternalResource;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-public class DatabaseRule extends ExternalResource{
-
+public class DBRule extends ExternalResource {
     @Override
     protected void before(){
         DB.sql2o =new Sql2o("jdbc:postgresql://localhost:5432/wildlife_sighting_test", "moringa", "nic5622");
