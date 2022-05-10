@@ -3,9 +3,6 @@ table{
     overflow: scroll;
 }
 
-td{
+td,h1{
     color:white;
-}
-h1{
-color: brown:
 }
